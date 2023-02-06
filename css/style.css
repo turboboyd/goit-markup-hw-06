@@ -287,7 +287,7 @@ img{
     transform: translate(-50%, -50%);
     min-width: 408px;
     min-height: 576px;
-    padding: 72px 24px;
+    padding: 72px 24px 24px;
     background: #FCFCFC;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
         0px 1px 3px rgba(0, 0, 0, 0.12),
@@ -325,6 +325,7 @@ textarea{
 }
 
 .form-title{
+    font-size: 16px;
     font-weight: 500;
     text-align: center;
     letter-spacing: 0.02em;
@@ -332,50 +333,47 @@ textarea{
     margin-bottom: 16px;
 }
 
-.form-feedback{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
 
 .form-field{
-    display: flex;
-    flex-direction: column;
+    display: block;
     margin-bottom: 8px;
     font-size: 12px;
     line-height: 1.16;
     letter-spacing: 0.01em;
     color: #8E8F99;
     text-align: left;
-    
 }
 
-.form-textarea{
-    margin-bottom: 16px;
-}
 .form-field span{
+    display: inline-block;
     margin-bottom: 4px;
-
 }
 
 .form-field input, .form-field textarea{
+    display: block;
     width: 100%;
-
+    font-size: 14px;
+    height: 40px;
     margin: 0;
-    padding: 14px 18px 14px 38px;
+    padding: 0 18px 0 38px;
     border: 1px solid rgba(33, 33, 33, 0.2);
     border-radius: 4px;
     background: unset;
     transition: border var(--transition-primari);
 }
 
+.form-textarea {
+    margin-bottom: 16px;
+}
+
 .form-field textarea {
-    height: 138px
+    height: 120px
 }
 
 .form-field input:hover, .form-field input:focus,
 .form-field textarea:hover, .form-field textarea:focus{
     border-color:  #4D5AE5;
+    outline: none;
 }
 
 
@@ -418,15 +416,13 @@ textarea{
 /* fsaf */
 
 .form-privacy {
-    display: inline-block;
-    width: 100%;
+    display: flex;
+    align-items: center;
     font-size: 12px;
     line-height: 1.33;
     letter-spacing: 0.04em;
     color: #757575;
     margin-bottom: 24px;
-    text-align: left;
-    align-items: center
 }
 
 .form-privacy-icon{
@@ -436,16 +432,21 @@ textarea{
     border: 1.25px solid #2E2F42;
     border-radius: 2px;
     margin-right: 8px;
-    transform: translateY(4px);
-    transition: border-color var(--transition-primari), background-color var(--transition-primari), background-image var(--transition-primari);
+    transition: border-color var(--transition-primari), background-color var(--transition-primari);
 }
 
-.checkbox:checked + .form-privacy-icon{
+.form-privacy-icon svg{
+    opacity: 0;
+    transition: opacity var(--transition-primari);
+}
+
+
+.checkbox:checked + .form-privacy-icon,
+.checkbox:checked+.form-privacy-icon svg {
     background-color: var(--pressed-state);
     border-color: var(--pressed-state);
-    background-image: url(../images/click.svg);
-    background-size: content;
     background-origin: border-box;
+    opacity: 1;
 }
 
 
@@ -454,7 +455,9 @@ textarea{
 
 }
 
-
+.form-button{
+    min-width: 169px;
+}
 /* конец кнопки */
 .section-title{
     color: var(--title-text-color);
@@ -758,25 +761,34 @@ textarea{
 
 .subscribe-form-field{
     display: flex;
-    justify-content: space-between
 }
 
 .subscribe-form-field input {
     width: 100%;
+    height: 40px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
     border-radius: 4px;
     background-color: unset;
     margin-right: 24px;
+    padding: 0 16px;
+    color: var(--white-color);
+    transition: border-color var(--transition-primari);
 }
 
 .subscribe-form-field input::placeholder{
-    padding: 8px 16px;
     font-size: 12px;
     line-height: 2;
     letter-spacing: 0.04em;
     color: rgba(255, 255, 255, 0.6);
 }
+
+.subscribe-form-field input:hover,
+.subscribe-form-field input:focus{
+    border-color: var(--pressed-state);
+    outline: var(--pressed-state);
+}
+
 
 .subscribe-button{
     display: flex;
